@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Player List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        a ,h1{
+            color: #e50000;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Manchester United Squad List</h1>
+
+<ul>
+   <% for (let player of players){ %>
+       <li><a href="/players/<%=player._id%>"><%=player.name%></a></li>
+    <% } %>
+</ul>
+
+<a style="color: black" href="/players/new">Add new Player </a>
+
+
+
+</body>
+
+
+
+</html>
