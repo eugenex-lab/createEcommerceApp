@@ -5,6 +5,10 @@ const path = require('path');
 
 const mongoose = require('mongoose');
 
+// add method override to express
+const methodOverride = require('method-override');
+
+
 
 const Player = require('./models/squad');
 
@@ -18,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/united',{useNewUrlParser:true , useU
         console.log(err)
     })
 
+app.use(methodOverride('_method'));
 app.set('views' ,path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
@@ -49,11 +54,11 @@ app.use(express.urlencoded({extended: true}));
 //     )
 
 
-
+const stayOrLeaveStatus = [ 'Stay', 'Leave' , 'one year of grace' , 'Loan' ];
 
 app.get('/players/new', (req, res) => {
         // res.send("New Player Page")
-        res.render('players/new')
+        res.render('players/new', {stayOrLeaveStatus} )
     }
 )
 
@@ -94,6 +99,34 @@ app.get('/players/:id', async (req, res) => {
     }
 )
 
+// add edit route
+
+app.get('/players/:id/editPlayer', async (req, res) => {
+    const player = await Player.findById(req.params.id)
+    //     const player = await Player.findById(id)
+        res.render('players/editPlayer', {stayOrLeaveStatus, player})
+}
+)
+
+app.put('/players/:id', async (req, res) => {
+    const player = await Player.findByIdAndUpdate(req.params.id, req.body , {runValidators: true , new : true} )
+    // console.log(req.body)
+    res.redirect(`/players/${player._id}`);
+
+    // console.log(req.body)
+    // res.send("Player profile page Edited" )
+
+}
+)
+
+// app delete route
+
+app.delete('/players/:id', async (req, res) => {
+    // res.send("Player profile page Deleted")
+    await Player.findByIdAndDelete(req.params.id)
+    res.redirect('/players')
+}
+)
 
 
 

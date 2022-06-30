@@ -29,8 +29,14 @@
 
 
 <a href="/players">View All United Players</a>
-</body>
+<br>
+<a href="/players/<%= player.id %>/editplayer">Edit Player</a>
+<form action="/players/<%= player._id %>/?_method=DELETE" method="POST">
+    <button type="submit">Delete Player</button>
 
+</form>
+
+</body>
 
 
 </html>

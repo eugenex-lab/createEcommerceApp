@@ -1,0 +1,8 @@
+# Project exclude paths
+/ExpressApp/node_modules/
+/expressHelloWorld/node_modules/
+/manutdWebMongo/node_modules/
+/manutdWebsite/node_modules/
+/npmTouch/interprete/node_modules/
+/npmTouch/node_modules/
+/npmTouch/united/node_modules/

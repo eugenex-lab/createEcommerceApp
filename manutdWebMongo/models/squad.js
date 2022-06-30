@@ -15,8 +15,8 @@ const playerSchema =  mongoose.Schema({
     ,
     position: {
         type: String,
-        required: true,
-        enum: ["GoalKeeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfielder"
+        required: false,
+        enum: ["GoalKeeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfield"
         , "Right Wing" , "Left Wing", "Center Forward" ,"Left Forward", "Right Forward","Second Striker" , "Attacker" ]
     }
     ,
