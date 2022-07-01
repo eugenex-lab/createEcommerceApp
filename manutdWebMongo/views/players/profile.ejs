@@ -21,10 +21,16 @@
 <h1><%=player.name %> player profile</h1>
 
 <ul>
+    <li>Fan name: <%=player.fanName %></li>
+    <li>Country: <%=player.country %></li>
     <li>Position: <%= player.position %> </li>
     <li>Average Rating: <%= player.averageRatings %> </li>
     <li>Image: <%= player.image %> </li>
-    <li>Decision Stay or Leave : <%= player.stayOrLeave %> </li>
+    <li>Team status : <%= player.teamStatus %> </li>
+    <li>Fan Decision on player : <%= player.fanDecision %> </li>
+    <li>Team Performance meter  : <%= player.fanPerformanceMeter %> % </li>
+    <li>Fan Decision on team : <a href="/players?nominateFanCategory=<%= player.nominateFanCategory %>"><%= player.nominateFanCategory %></a></li>
+
 </ul>
 
 

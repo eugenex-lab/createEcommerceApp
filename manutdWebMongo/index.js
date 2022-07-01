@@ -13,7 +13,7 @@ const methodOverride = require('method-override');
 const Player = require('./models/squad');
 
 
-mongoose.connect('mongodb://localhost:27017/united',{useNewUrlParser:true , useUnifiedTopology:true })
+mongoose.connect('mongodb://localhost:27017/unitedFanWeb',{useNewUrlParser:true , useUnifiedTopology:true , useCreateIndex:true})
     .then(() => {
         console.log("Connection Open")
                                 })
@@ -54,11 +54,15 @@ app.use(express.urlencoded({extended: true}));
 //     )
 
 
-const stayOrLeaveStatus = [ 'Stay', 'Leave' , 'one year of grace' , 'Loan' ];
+const teamStatus = ["None" ,"First Eleven", "Substitute" , "Bench" ,"One Year of Grace" ,"loan",]
+
+const fanDecision = ["None" ,"One Year Grace", "Sell" , "Hold" , "Loan" , "Transfer" ]
+
+const nominateFanCategory = [  "None"  ,"Shit team nominee", "Team of the Year" ]
 
 app.get('/players/new', (req, res) => {
         // res.send("New Player Page")
-        res.render('players/new', {stayOrLeaveStatus} )
+        res.render('players/new', {teamStatus , fanDecision , nominateFanCategory} )
     }
 )
 
@@ -67,13 +71,23 @@ app.get('/players/new', (req, res) => {
 app.get('/players', async (req, res) => {
         // res.send("Hello World");
 
-        const players = await Player.find({})
-        console.log(players)
-        // res.send("Player profile page")
-        res.render('players/index' , {players})
-        // res.send('ALL PLAYERS ARE HERE ')
-        // res.render('players', {players});
+        // const players = await Player.find({})
+        // console.log(players)
+        // // res.send("Player profile page")
+        // res.render('players/index' , {players})
+        // // res.send('ALL PLAYERS ARE HERE ')
+        // // res.render('players', {players});
 
+    const {nominateFanCategory} = req.query;
+
+        if(nominateFanCategory)
+        {
+            const players = await Player.find({nominateFanCategory})
+            res.render('players/index' , {players,nominateFanCategory})
+        }else {
+            const players = await Player.find({})
+            res.render('players/index' , {players, nominateFanCategory:"All"})
+        }
     }
 )
 
@@ -104,7 +118,7 @@ app.get('/players/:id', async (req, res) => {
 app.get('/players/:id/editPlayer', async (req, res) => {
     const player = await Player.findById(req.params.id)
     //     const player = await Player.findById(id)
-        res.render('players/editPlayer', {stayOrLeaveStatus, player})
+        res.render('players/editPlayer', {teamStatus , fanDecision, player , nominateFanCategory})
 }
 )
 

@@ -16,12 +16,12 @@ const playerSchema =  mongoose.Schema({
     position: {
         type: String,
         required: false,
-        enum: ["GoalKeeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfield"
+        enum: ["GoalKeeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfield","Attacking Midfield"
         , "Right Wing" , "Left Wing", "Center Forward" ,"Left Forward", "Right Forward","Second Striker" , "Attacker" ]
     }
     ,
     averageRatings: {
-        type: String,
+        type: Number,
         required: true
     },
     country: {
@@ -34,14 +34,31 @@ const playerSchema =  mongoose.Schema({
         required: false
     }
     ,
-    stayOrLeave: {
+    teamStatus: {
         type: String,
-      required: true,
-        enum: ['Stay', 'Leave' , 'one year of grace' , 'Loan' ]
-    },
+        required: false,
+     enum:["First Eleven" , "Substitute" ,  "First Team Bench","loan",]
 
+    }
+    ,
+    fanPerformanceMeter: {
+        type: Number,
+        required: false
+    }
+,
+    fanDecision: {
+        type: String,
+        required: true,
+        enum: ["One Year Grace", "Sell" , "Hold" , "Loan" , "Transfer" , "None"]
+    }
+    ,
 
+    nominateFanCategory: {
+        type: String,
+        enum:["None","Shit team nominee", "Team of the Year"  ]
+    }
 });
+
 
  const Player = mongoose.model('Player', playerSchema);
 

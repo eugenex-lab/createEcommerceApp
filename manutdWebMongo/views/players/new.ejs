@@ -46,9 +46,8 @@
                     <div class="form-group">
                         <label for="position">Position</label>
                         <select class="form-control" id="position" name="position">
-                            <option value="">Select Player Position</option>
-
-                            <option value="Goalkeeper">Goalkeeper</option>
+                            <option value="">Select Preferred Player Position</option>
+                            <option value="Goalkeeper">Goalkeeper</option>                            <option value="Goalkeeper">Goalkeeper</option>
                             <option value="Center Back">Center Back</option>
                             <option value="Left Back">Left Back</option>
                             <option value="Right Back">Right Back</option>
@@ -67,14 +66,14 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="averageRatings">Average Ratings</label>
-                        <input type="text" class="form-control" id="averageRatings" name="averageRatings">
+                        <label for="averageRatings">Average Ratings 2021/2022 Season</label>
+                        <input type="number" class="form-control" id="averageRatings" name="averageRatings" value="averageRatings" placeholder="Enter Average Ratings " MIN="0"  max="100" >
                     </div>
 
                     <div class="form-group">
-                        <label for="stayOrLeave">Stay or Leave</label>
-                        <select class="form-control" id="stayOrLeave" name="stayOrLeave">
-                            <% for (let selection of stayOrLeaveStatus) { %>
+                        <label for="teamStatus">Player Status</label>
+                        <select class="form-control" id="teamStatus" name="teamStatus">
+                            <% for (let selection of teamStatus) { %>
                             <option value="<%=selection%>"><%=selection%></option>
                             <% } %>
 <!--                            <option value="">Select Player Stay</option>-->
@@ -84,7 +83,36 @@
 <!--                            <option value="One year of grace">Loan</option>-->
                         </select>
                     </div>
-                    <button style="float: right;" type="submit" class="btn btn-primary" id="btn">Submit</button>
+
+
+                    <div class="form-group">
+                        <label for="fanDecision">Fan Status</label>
+                        <select class="form-control" id="fanDecision" name="fanDecision">
+                            <% for (let selection of fanDecision) { %>
+                            <option value="<%=selection%>"><%=selection%></option>
+                            <% } %>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="nominateFanCategory">Nominated Category</label>
+                        <select class="form-control" id="nominateFanCategory" name="nominateFanCategory">
+                            <% for (let selection of nominateFanCategory) { %>
+                            <option value="<%=selection%>"><%=selection%></option>
+                            <% } %>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fanPerformanceMeter">Fan Performance</label>
+                        <input type="range" class="form-control" id="fanPerformanceMeter" name="fanPerformanceMeter"  min="0" max="100">
+                    </div>
+
+                        <button style="float: right;" type="submit" class="btn btn-primary" id="btn">Submit</button>
+
                 </form>
                 <a href="/players" class="btn btn-danger">Cancel</a>
 

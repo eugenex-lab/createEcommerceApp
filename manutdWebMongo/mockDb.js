@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Player = require('./models/squad');
 
 
-mongoose.connect('mongodb://localhost:27017/unitedMaster',{useNewUrlParser:true , useUnifiedTopology:true })
+mongoose.connect('mongodb://localhost:27017/unitedFanWeb',{useNewUrlParser:true , useUnifiedTopology:true })
     .then(() => {
         console.log("Connection Open")
     })
