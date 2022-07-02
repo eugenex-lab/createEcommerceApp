@@ -32,32 +32,27 @@
                 <form action="/players" method="POST">
                     <div class="form-group">
                         <label for="name">Player Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Player Name">
+                        <input type="text" class="form-control"   id="name" name="name" placeholder="Enter Player Name" >
                     </div>
                     <div class="form-group">
                         <label for="fanName">Fan Name</label>
-                        <input type="text" class="form-control" id="fanName" name="fanName" placeholder="Enter Fan Name">
+                        <input type="text" class="form-control" required id="fanName" name="fanName" placeholder="Enter Fan Name">
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="text" class="form-control" id="country" name="country" placeholder="Enter Player Country">
+                        <input type="text" class="form-control" required id="country" name="country" placeholder="Enter Player Country">
                     </div>
 
                     <div class="form-group">
                         <label for="position">Position</label>
-                        <select class="form-control" id="position" name="position">
+                        <select class="form-control" id="position" required name="position">
                             <option value="">Select Preferred Player Position</option>
                             <option value="Goalkeeper">Goalkeeper</option>                            <option value="Goalkeeper">Goalkeeper</option>
                             <option value="Center Back">Center Back</option>
                             <option value="Left Back">Left Back</option>
                             <option value="Right Back">Right Back</option>
-                            <option value="Defensive Midfield">Defensive Midfield</option>
                             <option value="Central Midfield">Central Midfield</option>
-                            <option value="Left Midfield">Left Midfield</option>
-                            <option value="Right Midfield">Right Midfield</option>
                             <option value="Attacking Midfield">Attacking Midfield</option>
-                            <option value="Left Wing">Left Wing</option>
-                            <option value="Right Wing">Right Wing</option>
                             <option value="Center Forward">Center Forward</option>
                             <option value="Left Forward">Left Forward</option>
                             <option value="Right Forward">Right Forward</option>
@@ -67,12 +62,12 @@
                     </div>
                     <div class="form-group">
                         <label for="averageRatings">Average Ratings 2021/2022 Season</label>
-                        <input type="number" class="form-control" id="averageRatings" name="averageRatings" value="averageRatings" placeholder="Enter Average Ratings " MIN="0"  max="100" >
+                        <input type="number" required class="form-control" id="averageRatings" name="averageRatings" value="averageRatings" placeholder="Enter Average Ratings " MIN="0"  max="100" >
                     </div>
 
                     <div class="form-group">
                         <label for="teamStatus">Player Status</label>
-                        <select class="form-control" id="teamStatus" name="teamStatus">
+                        <select class="form-control" required id="teamStatus" name="teamStatus">
                             <% for (let selection of teamStatus) { %>
                             <option value="<%=selection%>"><%=selection%></option>
                             <% } %>
@@ -87,7 +82,7 @@
 
                     <div class="form-group">
                         <label for="fanDecision">Fan Status</label>
-                        <select class="form-control" id="fanDecision" name="fanDecision">
+                        <select class="form-control" id="fanDecision"  required name="fanDecision">
                             <% for (let selection of fanDecision) { %>
                             <option value="<%=selection%>"><%=selection%></option>
                             <% } %>
@@ -98,7 +93,7 @@
 
                     <div class="form-group">
                         <label for="nominateFanCategory">Nominated Category</label>
-                        <select class="form-control" id="nominateFanCategory" name="nominateFanCategory">
+                        <select class="form-control" id="nominateFanCategory" required name="nominateFanCategory">
                             <% for (let selection of nominateFanCategory) { %>
                             <option value="<%=selection%>"><%=selection%></option>
                             <% } %>
@@ -108,7 +103,7 @@
 
                     <div class="form-group">
                         <label for="fanPerformanceMeter">Fan Performance</label>
-                        <input type="range" class="form-control" id="fanPerformanceMeter" name="fanPerformanceMeter"  min="0" max="100">
+                        <input type="range" class="form-control" id="fanPerformanceMeter" required name="fanPerformanceMeter"  min="0" max="100">
                     </div>
 
                         <button style="float: right;" type="submit" class="btn btn-primary" id="btn">Submit</button>

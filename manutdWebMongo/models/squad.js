@@ -1,7 +1,7 @@
  const mongoose = require('mongoose');
 
 
-const playerSchema =  mongoose.Schema({
+const playerSchema =   mongoose.Schema({
     name: {
         unique: true,
         type: String,
@@ -17,7 +17,7 @@ const playerSchema =  mongoose.Schema({
         type: String,
         required: false,
         enum: ["GoalKeeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfield","Attacking Midfield"
-        , "Right Wing" , "Left Wing", "Center Forward" ,"Left Forward", "Right Forward","Second Striker" , "Attacker" ]
+        ,  "Center Forward" ,"Left Forward", "Right Forward" , "Center Forward" ]
     }
     ,
     averageRatings: {

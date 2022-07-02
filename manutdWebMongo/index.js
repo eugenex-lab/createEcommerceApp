@@ -12,15 +12,30 @@ const methodOverride = require('method-override');
 
 const Player = require('./models/squad');
 
+//
+// mongoose.connect('mongodb://localhost:27017/unitedFanWeb',{useNewUrlParser:true , useUnifiedTopology:true })
+//     .then(() => {
+//         console.log("Connection Open")
+//                                 })
+//     .catch(err => {
+//         console.log("error help ")
+//         console.log(err)
+//     })
 
-mongoose.connect('mongodb://localhost:27017/unitedFanWeb',{useNewUrlParser:true , useUnifiedTopology:true , useCreateIndex:true})
-    .then(() => {
-        console.log("Connection Open")
-                                })
-    .catch(err => {
-        console.log("error help ")
-        console.log(err)
-    })
+
+
+
+//
+mongoose.connect('mongodb://localhost:27017/unitedFanWeb',{useNewUrlParser:true  ,  useUnifiedTopology:true })
+
+  db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', ()=> {
+console.log('connected to mongoDB');
+}
+);
+
 
 app.use(methodOverride('_method'));
 app.set('views' ,path.join(__dirname, 'views'));
@@ -62,9 +77,46 @@ const nominateFanCategory = [  "None"  ,"Shit team nominee", "Team of the Year" 
 
 app.get('/players/new', (req, res) => {
         // res.send("New Player Page")
-        res.render('players/new', {teamStatus , fanDecision , nominateFanCategory} )
+        // res.render('players/new', {teamStatus , fanDecision , nominateFanCategory} )
+
+    // throw error for wrong validation
+
+    if (req.query.name === "") {
+        throw new Error("Name is required")
     }
+    if (req.query.fanName === "") {
+        throw new Error("Fan Name is required")
+    }
+    if (req.query.position === "") {
+throw new Error("Position is required")
+    }
+    if (req.query.averageRatings === "") {
+        throw new Error("Average Ratings is required")
+    }
+    if (req.query.country === "") {
+        throw new Error("Country is required")
+    }
+    if (req.query.image === "") {
+        throw new Error("Image is required")
+    }
+    if (req.query.teamStatus === "") {
+        throw new Error("Team Status is required")
+    }
+    if (req.query.fanPerformanceMeter === "") {
+        throw new Error("Fan Performance Meter is required")
+    }
+    if (req.query.fanDecision === "") {
+throw new Error("Fan Decision is required")
+    }
+    if (req.query.nominateFanCategory === "") {
+        throw new Error("Nominate Fan Category is required")
+    }else {
+    res.render('players/new', {teamStatus , fanDecision , nominateFanCategory}
+
 )
+    }
+}
+);
 
 
 
@@ -139,9 +191,18 @@ app.delete('/players/:id', async (req, res) => {
     // res.send("Player profile page Deleted")
     await Player.findByIdAndDelete(req.params.id)
     res.redirect('/players')
+
+
+    res.send("Player profile page Deleted")
+
 }
 )
 
+
+app.get('*', (req, res) => {
+res.send("404 Page Not Found")
+}
+)
 
 
 app.listen(8282, () => {
