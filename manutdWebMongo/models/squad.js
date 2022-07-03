@@ -16,7 +16,7 @@ const playerSchema =   mongoose.Schema({
     position: {
         type: String,
         required: false,
-        enum: ["GoalKeeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfield","Attacking Midfield"
+        enum: ["Goal Keeper",'Center Back' , "Left Back" , "Right Back" , "Central Midfield","Attacking Midfield"
         ,  "Center Forward" ,"Left Forward", "Right Forward" , "Center Forward" ]
     }
     ,
@@ -37,7 +37,7 @@ const playerSchema =   mongoose.Schema({
     teamStatus: {
         type: String,
         required: false,
-     enum:["First Eleven" , "Substitute" ,  "First Team Bench","loan",]
+     enum:["None" , "First Eleven", "Substitute" , "Bench" , "u23 Reserve Team" ]
 
     }
     ,
@@ -49,7 +49,8 @@ const playerSchema =   mongoose.Schema({
     fanDecision: {
         type: String,
         required: true,
-        enum: ["One Year Grace", "Sell" , "Hold" , "Loan" , "Transfer" , "None"]
+        enum: ["None" ,"One Year Grace", "Sell" , "Hold" , "Loan" , "Transfer" ]
+
     }
     ,
 

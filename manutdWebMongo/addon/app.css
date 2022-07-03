@@ -1,3 +1,8 @@
-body{
-    background-color : blueviolet;
+
+body {
+    background-color: #b2a2a2;
+}
+
+.container-fluid-md {
+padding-left: 30px;
 }

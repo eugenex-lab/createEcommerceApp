@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require("body-parser");
 
+let $ = require('jquery')
 
 const mongoose = require('mongoose');
+// let $ = require("jquery");
+
 
 // add method override to express
 const methodOverride = require('method-override');
@@ -41,6 +45,8 @@ app.use(methodOverride('_method'));
 app.set('views' ,path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/addon'));
 
 
 
@@ -69,55 +75,29 @@ app.use(express.urlencoded({extended: true}));
 //     )
 
 
-const teamStatus = ["None" ,"First Eleven", "Substitute" , "Bench" ,"One Year of Grace" ,"loan",]
+
+const teamStatus = ["None" , "First Eleven", "Substitute" , "Bench" , "u23 Reserve Team" ]
 
 const fanDecision = ["None" ,"One Year Grace", "Sell" , "Hold" , "Loan" , "Transfer" ]
 
 const nominateFanCategory = [  "None"  ,"Shit team nominee", "Team of the Year" ]
 
+const unitedSquad = [ "De Gea", "Lee Grant","Tom Heaton", "Dean Henderson" , "Alex Telles" , "Álvaro Fernández" ,
+    "Eric Bailly",  "Diogo Dalot" , "Björn Hardley", "Phil Jones", "Victor Lindelöf", "Harry Maguire",
+    "Luke Shaw" ,"Raphaël Varane", "Aaron Wan-Bissaka" , "Charlie Wellens", "Bruno Fernandes" ,  "Fred" ,
+    "Zidane Iqbal" , "Jesse Lingard", "Mata" , "Nemanja Matić" , "Scott McTominay", "Hannibal Mejbri" ,
+    "Paul Pogba", "Charlie Savage","Alejandro Garnacho","Edinson Cavani","Cristiano Ronaldo",
+    "Anthony Elanga","Mason Greenwood","Marcus Rashford","Jadon Sancho","Shola Shoretire"]
+
+
+// document = new JSDOM('').window.document;
+
 app.get('/players/new', (req, res) => {
         // res.send("New Player Page")
-        // res.render('players/new', {teamStatus , fanDecision , nominateFanCategory} )
+        res.render('players/new', { unitedSquad, teamStatus , fanDecision , nominateFanCategory} )
 
-    // throw error for wrong validation
-
-    if (req.query.name === "") {
-        throw new Error("Name is required")
-    }
-    if (req.query.fanName === "") {
-        throw new Error("Fan Name is required")
-    }
-    if (req.query.position === "") {
-throw new Error("Position is required")
-    }
-    if (req.query.averageRatings === "") {
-        throw new Error("Average Ratings is required")
-    }
-    if (req.query.country === "") {
-        throw new Error("Country is required")
-    }
-    if (req.query.image === "") {
-        throw new Error("Image is required")
-    }
-    if (req.query.teamStatus === "") {
-        throw new Error("Team Status is required")
-    }
-    if (req.query.fanPerformanceMeter === "") {
-        throw new Error("Fan Performance Meter is required")
-    }
-    if (req.query.fanDecision === "") {
-throw new Error("Fan Decision is required")
-    }
-    if (req.query.nominateFanCategory === "") {
-        throw new Error("Nominate Fan Category is required")
-    }else {
-    res.render('players/new', {teamStatus , fanDecision , nominateFanCategory}
-
-)
-    }
 }
 );
-
 
 
 app.get('/players', async (req, res) => {
@@ -170,8 +150,11 @@ app.get('/players/:id', async (req, res) => {
 app.get('/players/:id/editPlayer', async (req, res) => {
     const player = await Player.findById(req.params.id)
     //     const player = await Player.findById(id)
-        res.render('players/editPlayer', {teamStatus , fanDecision, player , nominateFanCategory})
+        res.render('players/editPlayer', {teamStatus , fanDecision, player  , unitedSquad, nominateFanCategory})
 }
+
+
+
 )
 
 app.put('/players/:id', async (req, res) => {
@@ -192,8 +175,6 @@ app.delete('/players/:id', async (req, res) => {
     await Player.findByIdAndDelete(req.params.id)
     res.redirect('/players')
 
-
-    res.send("Player profile page Deleted")
 
 }
 )

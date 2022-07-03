@@ -8,12 +8,19 @@
     <title>New Player</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        a , #btn {
-            color: #e50000;
-        }
-    </style>
+    <link   rel="stylesheet" href="addon/app.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/js/tom-select.complete.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link href="/app.css" rel="stylesheet" type="text/css">
+
+
+
+
 </head>
 
 <body>
@@ -23,17 +30,39 @@
 
 
 
-    <div class="container">
+    <div class="container-fluid-md">
         <h1>Add A New Player</h1>
         <br>
         <div class="row">
 
             <div class="col-md-6">
                 <form action="/players" method="POST">
+
+
+
                     <div class="form-group">
                         <label for="name">Player Name</label>
-                        <input type="text" class="form-control"   id="name" name="name" placeholder="Enter Player Name" >
+                        <select  class="js-example-responsive" id="name" style="width:100%  " name="name"  required>
+                            <option value="">Select Player</option>
+                            <% for (let selection of unitedSquad) { %>
+                               <option value="<%=selection%>"><%=selection%></option>
+                            <% } %>
+
+                        </select>
                     </div>
+
+                    <script>
+                        new TomSelect("#name",{
+                            create: false,
+                            sortField: {
+                                field: "text",
+                                direction: "asc"
+                            }
+                        });
+
+                    </script>
+
+
                     <div class="form-group">
                         <label for="fanName">Fan Name</label>
                         <input type="text" class="form-control" required id="fanName" name="fanName" placeholder="Enter Fan Name">
@@ -47,7 +76,7 @@
                         <label for="position">Position</label>
                         <select class="form-control" id="position" required name="position">
                             <option value="">Select Preferred Player Position</option>
-                            <option value="Goalkeeper">Goalkeeper</option>                            <option value="Goalkeeper">Goalkeeper</option>
+                            <option value="Goal Keeper">Goal Keeper</option>
                             <option value="Center Back">Center Back</option>
                             <option value="Left Back">Left Back</option>
                             <option value="Right Back">Right Back</option>
@@ -71,11 +100,6 @@
                             <% for (let selection of teamStatus) { %>
                             <option value="<%=selection%>"><%=selection%></option>
                             <% } %>
-<!--                            <option value="">Select Player Stay</option>-->
-<!--                            <option value="Stay">Stay</option>-->
-<!--                            <option value="Leave">Leave</option>-->
-<!--                            <option value="One year of grace" selected>One year of grace</option>-->
-<!--                            <option value="One year of grace">Loan</option>-->
                         </select>
                     </div>
 
@@ -115,9 +139,22 @@
         </div>
     </div>
 
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 
+
+<script>
+    <script>
+        $(document).ready(function() {
+        $('.js-example-basic-multiple').select2()
+        });
+
+
+        $(document).ready(function () {
+        $("#select_page").hide()
+        });
+        console.log("select_page hidden")
+    }
+
+</script>
 </html>
