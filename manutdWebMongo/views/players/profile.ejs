@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,12 +35,13 @@
 </ul>
 
 
-<a href="/players">View All United Players</a>
-<br>
-<a href="/players/<%= player.id %>/editplayer">Edit Player</a>
-<form action="/players/<%= player._id %>/?_method=DELETE" method="POST">
-    <button type="submit">Delete Player</button>
 
+<button> <a href="/players">View All United Players</a></button>
+
+<button ><a href="/players/<%= player.id %>/editplayer">Edit Player</a> </button>
+    ]
+<form class="btn-group-lg" action="/players/<%= player._id %>/?_method=DELETE" method="POST">
+    <button class=" btn-danger" type="submit">Delete Player</button>
 </form>
 
 </body>

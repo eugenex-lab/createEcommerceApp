@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,">
+    <title>Profile Display </title>
+</head>
+
+<body>
+
+    <h1>PLayer Name: <%= pick.playername%></h1>
+    <li>Players id: <%=pick.id%> </li>
+    <li>Fan Name: <%= pick.fanName%></li>
+    <li>Player Position: <%= pick.position%></li>
+    <li>Average ratings: <%= pick.averageratings%></li>
+
+
+    <br>
+    <a href="/playerspick">Back to list of players</a>
+    <br>
+    <a href="/playerspick/<%= pick.id%>/edit">edited player profile</a>
+
+    <form method="POST" action="/playerspick/<%=pick.id%>/?_method=DELETE">
+        <button>DELETE</button>
+    </form>
+    <br>
+
+
+
+</body>
+
+
+
+</html>

@@ -24,9 +24,9 @@
 
 <h1>Manchester United Squad List</h1>
 
-<ul>
+<ul class="bg-light">
    <% for (let player of players){ %>
-       <li><a href="/players/<%=player._id%>"><%=player.name%></a> </li>
+       <li><a class="lead" href="/players/<%=player._id%>"><%=player.name%></a> </li>
     <% } %>
 </ul>
 

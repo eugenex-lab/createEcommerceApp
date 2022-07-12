@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,">
+    <title>Edit Shitty United Shitty Players </title>
+</head>
+<body>
+
+<h1>Players Edits Fans</h1>
+
+<form method="POST" action="/playerspick/<%=pick.id%>/?_method=PATCH">
+    <section>
+        <label for="playername">Player name </label>
+        <br>
+        <input type="text" name="playername" id="playername" placeholder="Type player name"  <%=pick.playername%>>
+    </section>
+    <br>
+    <section>
+        <label for = "averageratings">Player Rating (1 to 5)</label>
+        <br>
+        <!--    <textarea name = "" id="ratings" cols="30" rows="10"></textarea>-->
+        <textarea name = "averageratings" id="averageratings"  <%=pick.averageratings%> ></textarea>
+    </section>
+    <section>
+        <label for = "fanName">Player Fan Name</label>
+        <br>
+        <!--    <textarea name = "" id="ratings" cols="30" rows="10"></textarea>-->
+        <textarea name = "fanName" id="fanName" <%=pick.fanName%> ></textarea>
+    </section>
+    <section>
+        <label for = "position">Player Position</label>
+        <br>
+        <!--    <textarea name = "" id="ratings" cols="30" rows="10"></textarea>-->
+        <textarea name = "position" id="position" >
+
+            <%=pick.position%>
+        </textarea>
+
+    </section>
+    <button>Save Changes </button>
+    <br>
+</form>
+<br>
+<a href="/playerspick">Back to list of players</a>
+<br>
+<br>
+<a href="/playerspick/addplayer"> Add United Player to Shit Players Pool </a>
+
+</body>
+</html>

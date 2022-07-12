@@ -1,0 +1,56 @@
+{
+
+  "type": "module",
+
+  "name": "united",
+
+  "version": "1.0.0",
+
+  "description": "",
+
+  "main": "index",
+
+  "scripts": {
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+
+  },
+
+  "author": "eugenex",
+
+  "license": "ISC",
+
+  "dependencies": {
+
+    "chai": "^4.3.6",
+
+    "chalk": "^5.0.1",
+
+    "cli": "^1.0.1",
+
+    "epl-fixtures": "^1.1.0",
+
+    "epl-fixtures-cli": "^1.0.1",
+
+    "figlet": "^1.5.2",
+
+    "franc": "^6.0.0",
+
+    "lang": "^0.1.1",
+
+    "langs": "^2.0.0"
+
+  },
+
+  "devDependencies": {
+
+    "cli-table": "^0.3.11",
+
+    "commander": "^9.3.0",
+
+    "moment": "^2.29.3"
+
+  }
+
+}
+

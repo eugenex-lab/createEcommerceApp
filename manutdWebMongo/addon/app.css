@@ -1,8 +1,12 @@
 
 body {
-    background-color: #b2a2a2;
+    background-color: #e1d3d3;
 }
 
 .container-fluid-md {
 padding-left: 30px;
+}
+
+a, #btn {
+    color: #000000;
 }
