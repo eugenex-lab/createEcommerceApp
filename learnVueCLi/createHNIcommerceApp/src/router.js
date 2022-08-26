@@ -9,6 +9,7 @@ import ContactAdvisor from "@/components/pages/product/ContactAdvisor";
 import RegisterUser from "@/components/pages/user/RegisterUser";
 import NotFound from "@/components/pages/NotFound";
 import AdvisorPage from "@/components/pages/admin/AdvisorPage";
+import AboutPage from "@/components/pages/admin/AboutPage";
 
 
 const router = createRouter({
@@ -22,12 +23,13 @@ const router = createRouter({
             ]
         },
         {path: '/cart', component: CartList},  // Product page
+        {path: '/about', component: AboutPage},
         {path: '/registerUser', component: RegisterUser}, // user folder
         {path: '/registerAdvisor', component: RegisterAdvisor},  // admin
         {path: '/advisorPage', component: AdvisorPage},
         {path: '/registerProduct', component: ProductRegistration},
         // Not found page
-        {path: '*', component: NotFound},
+        {path: '/:notFound(.*)', component: NotFound},
 
     /// much more later'
     // path login page
