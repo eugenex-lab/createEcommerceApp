@@ -14,17 +14,17 @@
     <MarqueeText
         :repeat="3"
         :paused="isPaused"
-        class="py-2 bg-dark text-white mt-2"
+        class="py-2 bg-dark text-white"
         @mouseenter="isPaused = !isPaused"
         @mouseleave="isPaused = false"
     >
-      <span class="badge badge-success ml-2">0,3000008%</span> ATX
-      <span class="badge badge-danger ml-2">0,100000000006%</span> DAX
-      <span class="badge badge-success ml-2">0,000000004%</span> TecDax
-      <span class="badge badge-danger ml-2">0,10000009%</span> MDAX
-      <span class="badge badge-success ml-2">0,03%</span> ESTX50
-      <span class="badge badge-info ml-2">0,00%</span> NIKKEI
-      <span class="badge badge-success ml-2">0,03%</span> EUR/CHF
+      <span class="badge badge-success ml-2 ">0,30%</span><span class="triangle-up"></span> TWITTER
+      <span class="badge badge-danger ml-2">0,16%</span> BENZ
+      <span class="badge badge-success ml-2">0,04%</span><span class="triangle-up"></span> TESLA
+      <span class="badge badge-danger ml-2">-0,19%</span> DANGOTE
+      <span class="badge badge-success ml-2">0,03%</span><span class="triangle-up"></span> FCMB
+      <span class="badge badge-info ml-2">0,00%</span> MTN
+      <span class="badge badge-success ml-2">0.03%</span><span class="triangle-up"></span> EUR/CHF
     </MarqueeText>
     <MarqueeText
         :duration="20"
@@ -51,7 +51,6 @@
     </MarqueeText>
 
 
-    <div class="fxSlide">2</div>
     <div>3</div>
   </section>
 <!--  </TheBody>-->
@@ -124,6 +123,22 @@ export default defineComponent( {
 
 <style scoped>
 @import '~bootstrap/dist/css/bootstrap.css';
+/*@import 'bootstrap/dist/css/bootstrap.css';*/
+/*@import 'bootstrap-vue/dist/bootstrap-vue.css';*/
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #000;
+  color: #28a745;
+  position: relative;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 40px;
+
+}
 
 main{
   position: absolute;
@@ -214,6 +229,19 @@ img {
 
 table code {
   white-space: nowrap;
+}
+
+.badge-success {
+  background-color: #28a745;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+}
+
+.badge-info{
+  background-color: #17a2b8;
+  padding: 0.25rem 0.4rem;
 }
 
 </style>
