@@ -1,50 +1,54 @@
 <template>
   <header>
-    <nav>
-      <h1>
-        <router-link to="/">
-          <img src="https://dp76jxyzopnbo.cloudfront.net/wealthng/2.0/static/images/logo-w.svg" alt="home"/>
-        </router-link>
-      </h1>
-      <ul>
-        <li>
-          <router-link to="/products">Products</router-link>
-        </li>
-        <li>
-          <router-link to="/cart">
-            <img class="cartImage" src="https://img.icons8.com/ios-filled/50/FFFFFF/shopping-cart.png" alt="home"
-            />
+    <div class="nav-position">
+      <nav>
+        <div >
+          <router-link class="positionLOgo" to="/">
+            <img class="wealthLOgo" src="https://dp76jxyzopnbo.cloudfront.net/wealthng/2.0/static/images/logo-w.svg" alt="home"/>
           </router-link>
-          <base-badge mode="elegant">{{ cartQuantity }}</base-badge>
-        </li>
-        <li>
-          <router-link to="/about">About</router-link>
-        </li>
-        <li>
-          <router-link to="/login">Login</router-link>
-        </li>
-        <li >
+        </div>
+        <ul>
+          <li>
+            <router-link to="/products">Products</router-link>
+          </li>
+          <li>
+            <router-link to="/cart">
+              <img class="cartImage" src="https://img.icons8.com/ios-filled/50/FFFFFF/shopping-cart.png" alt="home"
+                   style="width: 30px; height: 30px;">
+            </router-link>
+            <base-badge mode="elegant">{{ cartQuantity }}</base-badge>
+          </li>
+          <li>
+            <router-link to="/about">About</router-link>
+          </li>
+          <li>
+            <router-link to="/login">Login</router-link>
+          </li>
+          <li >
 
-          <router-link class="logOut" to="/logout"><span class="signUpAlign">Sign Up</span></router-link>
+            <router-link class="logOut" to="/logout"><span class="signUpAlign">Sign Up</span></router-link>
 
-        </li>
-
-
+          </li>
 
 
-      <li v-if="loggedIn">
-        <router-link to="/admin">Admin</router-link>
-        c
-      </li>
-      <!--        // user account for login and logout-->
-      <!--        <li v-if="loggedIn">-->
-      <!--          <router-link to="/user">User</router-link>-->
-      <!--        </li>-->
-      <!--        <li v-if="!loggedIn">-->
-      <!--          <router-link to="/login">Login</router-link>  -->
-      <!--        </li>-->
-      </ul>
-    </nav>
+
+
+          <li v-if="loggedIn">
+            <router-link to="/admin">Admin</router-link>
+            c
+          </li>
+          <!--        // user account for login and logout-->
+          <!--        <li v-if="loggedIn">-->
+          <!--          <router-link to="/user">User</router-link>-->
+          <!--        </li>-->
+          <!--        <li v-if="!loggedIn">-->
+          <!--          <router-link to="/login">Login</router-link>  -->
+          <!--        </li>-->
+        </ul>
+      </nav>
+    </div>
+
+
   </header>
 </template>
 
@@ -80,6 +84,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 header a {
@@ -195,6 +200,23 @@ li:last-child {
   letter-spacing: 0;
   line-height: NaNpx;
   right: -1.5rem;
+}
+.wealthLOgo {
+  height: initial;
+  width: auto;
+  padding-left: inherit;
+}
+
+.positionLOgo {
+  position: absolute;
+  left: 1rem;
+  top: 0.4rem;
+}
+
+.nav-position{
+  position: relative;
+
+
 }
 
 </style>
